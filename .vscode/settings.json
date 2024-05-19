@@ -9,4 +9,5 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
+  "workbench.sideBar.location": "right"
 }
