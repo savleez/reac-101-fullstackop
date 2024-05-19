@@ -1,11 +1,12 @@
 {
-    "editor.formatOnSave": true,
-    "editor.rulers": [
-        80,
-        100
-    ],
-    "IDX.aI.enableInlineCompletion": true,
-    "IDX.aI.enableCodebaseIndexing": true,
-    "prettier.jsxSingleQuote": true,
-    "prettier.singleQuote": true
+  "editor.formatOnSave": true,
+  "editor.rulers": [80, 100],
+  "IDX.aI.enableInlineCompletion": true,
+  "IDX.aI.enableCodebaseIndexing": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
 }
