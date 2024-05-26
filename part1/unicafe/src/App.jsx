@@ -3,6 +3,21 @@ import { useState } from 'react';
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 
 const Statistics = ({ good, neutral, bad }) => {
+  let totalVotes = good + neutral + bad;
+  // Handle the case where there are no votes to avoid division by zero errors
+  if (totalVotes === 0) {
+    return (
+      <>
+        <h1>Statistics</h1>
+        <p>No feedback given</p>
+      </>
+    );
+  }
+
+  let average = ((good * 1 + neutral * 0 + bad * -1) / totalVotes) * 100;
+
+  let positive = (good / totalVotes) * 100;
+
   return (
     <>
       <h1>Statistics</h1>
@@ -10,6 +25,11 @@ const Statistics = ({ good, neutral, bad }) => {
         Good: {good} <br />
         Neutral: {neutral} <br />
         Bad: {bad}
+      </p>
+      <p>
+        All: {totalVotes} <br />
+        Average: {average} % <br />
+        Positive: {positive} %
       </p>
     </>
   );
