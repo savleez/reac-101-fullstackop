@@ -22,7 +22,6 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
-  const [mostVoted, setMostVoted] = useState(0);
 
   const getRamdomValue = () => {
     return Math.floor(Math.random() * anecdotes.length);
@@ -47,10 +46,9 @@ const App = () => {
     let newVotes = [...votes];
     newVotes[selected] += 1;
     setVotes(newVotes);
-
-    let mostVoted = newVotes.indexOf(Math.max(...newVotes));
-    setMostVoted(mostVoted);
   };
+
+  let mostVoted = votes.indexOf(Math.max(...votes));
 
   return (
     <>
