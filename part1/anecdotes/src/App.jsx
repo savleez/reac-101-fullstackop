@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const Button = () => {
+const Button = ({ onClick }) => {
   return (
     <>
-      <button>Random Anecdote!</button>
+      <button onClick={onClick}>Random Anecdote!</button>
     </>
   );
 };
@@ -22,10 +22,29 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
 
+  const getRamdomValue = () => {
+    return Math.floor(Math.random() * anecdotes.length);
+  };
+
+  const getRandomAnecdote = (currentIndex) => {
+    let randomIndex = currentIndex;
+
+    while (randomIndex === currentIndex) {
+      randomIndex = getRamdomValue();
+    }
+
+    return randomIndex;
+  };
+
+  const handleRandomAnecdote = () => {
+    let newSelected = getRandomAnecdote(selected);
+    setSelected(newSelected);
+  };
+
   return (
     <div>
       {anecdotes[selected]} <br />
-      <Button />
+      <Button onClick={handleRandomAnecdote} />
     </div>
   );
 };
