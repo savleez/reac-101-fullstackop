@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const Button = ({ onClick }) => {
+const Button = ({ onClick, text }) => {
   return (
     <>
-      <button onClick={onClick}>Random Anecdote!</button>
+      <button onClick={onClick}>{text}</button>
     </>
   );
 };
@@ -21,6 +21,7 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
 
   const getRamdomValue = () => {
     return Math.floor(Math.random() * anecdotes.length);
@@ -41,10 +42,21 @@ const App = () => {
     setSelected(newSelected);
   };
 
+  const handleVote = () => {
+    let newVotes = [...votes];
+    newVotes[selected] += 1;
+    setVotes(newVotes);
+  };
+
   return (
     <div>
       {anecdotes[selected]} <br />
-      <Button onClick={handleRandomAnecdote} />
+      <Button onClick={handleRandomAnecdote} text='Random Anecdote!' /> <br />
+      <Button onClick={handleVote} text='Vote for this anecdote' /> <br />
+      <p>
+        This anecdote has {votes[selected]}{' '}
+        {votes[selected] != 1 ? 'votes' : 'vote'}
+      </p>
     </div>
   );
 };
